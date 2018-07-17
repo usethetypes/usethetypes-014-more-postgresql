@@ -2,8 +2,8 @@
 
 module Main (main) where
 
-import Snap.Core (ifTop, writeText)
+import Snap.Core (writeText)
 import Snap.Http.Server (quickHttpServe)
 
 main :: IO ()
-main = quickHttpServe $ ifTop (writeText "Hello world")
+main = quickHttpServe $ writeText "Hello world"

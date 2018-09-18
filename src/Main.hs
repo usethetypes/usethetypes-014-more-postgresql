@@ -8,6 +8,6 @@ import Snap.Http.Server (quickHttpServe)
 
 main :: IO ()
 main = quickHttpServe $
-    ifTop (writeText "Hello world")
+    ifTop (writeText "index")
     <|> route [ ("/ping", writeText "Ping") ]
     <|> writeText "Bad path"

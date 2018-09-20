@@ -7,7 +7,4 @@ import Snap.Core (ifTop, route, writeText)
 import Snap.Http.Server (quickHttpServe)
 
 main :: IO ()
-main = quickHttpServe $
-    ifTop (writeText "index")
-    <|> route [ ("/ping", writeText "Ping") ]
-    <|> writeText "Bad path"
+main = putStrLn "Hello world!"

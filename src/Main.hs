@@ -3,7 +3,7 @@
 module Main (main) where
 
 import Control.Applicative ((<|>))
-import Snap.Core (ifTop, route, writeText)
+import Snap.Core (ifTop, route)
 import Snap.Http.Server (httpServe, setPort)
 import Snap.Util.FileServe (serveDirectory, serveFile)
 import System.Environment (lookupEnv)

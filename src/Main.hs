@@ -3,7 +3,14 @@
 module Main (main) where
 
 import Control.Applicative ((<|>))
-import Snap.Core (ifTop, route)
+import Snap.Core
+        ( Method(..)
+        , MonadSnap
+        , ifTop
+        , method
+        , route
+        , sendFile
+        )
 import Snap.Http.Server (httpServe, setPort)
 import Snap.Util.FileServe (serveDirectory, serveFile)
 import System.Environment (lookupEnv)
@@ -16,5 +23,9 @@ main = do
     httpServe config $
         ifTop (serveFile "views/index.html")
         <|> route
-            [ ("/static", serveDirectory "static")
+            [ ("/info", method GET showInfo)
+            , ("/static", serveDirectory "static")
             ]
+
+showInfo :: MonadSnap m => m ()
+showInfo = sendFile "views/_info.html"

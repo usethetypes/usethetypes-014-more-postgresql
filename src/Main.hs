@@ -3,17 +3,19 @@
 module Main (main) where
 
 import Control.Applicative ((<|>))
+import qualified Data.HashMap.Strict as HashMap
 import Snap.Core
         ( Method(..)
         , MonadSnap
         , ifTop
         , method
         , route
-        , sendFile
         )
 import Snap.Http.Server (httpServe, setPort)
 import Snap.Util.FileServe (serveDirectory, serveFile)
 import System.Environment (lookupEnv)
+
+import App.Template
 
 main :: IO ()
 main = do
@@ -28,4 +30,6 @@ main = do
             ]
 
 showInfo :: MonadSnap m => m ()
-showInfo = sendFile "views/_info.html"
+showInfo = renderTemplate "views/_info.html" $ HashMap.fromList
+            [ ("title", "Info")
+            ]

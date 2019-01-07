@@ -3,6 +3,7 @@
 module Main (main) where
 
 import Control.Applicative ((<|>))
+import Control.Monad.IO.Class (MonadIO(..))
 import Data.Text (Text)
 import Snap.Core
         ( Method(..)
@@ -13,7 +14,7 @@ import Snap.Core
         )
 import Snap.Http.Server (httpServe, setPort)
 import Snap.Util.FileServe (serveDirectory, serveFile)
-import System.Environment (lookupEnv)
+import System.Environment (getEnvironment, lookupEnv)
 import Text.Ginger ((~>), dict)
 
 import App.Template
@@ -31,8 +32,9 @@ main = do
             ]
 
 showInfo :: MonadSnap m => m ()
-showInfo =
+showInfo = do
+    envVars <- liftIO getEnvironment
     renderTemplate "views/_info.html" $ dict
         [ ("title" ~> ("Info" :: Text))
-        , ("items" ~> ["line0" :: Text, "line1", "line2"])
+        , ("envVars" ~> envVars)
         ]

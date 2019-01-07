@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ title }}</title>
+    <title>{{ title | escape }}</title>
+    <style>
+      .env th, .env td {
+        text-align: left;
+      }
+    </style>
   </head>
   <body>
-    <h1>{{ title }}</h1>
-    {% for item in items %}
-      <p>{{ item }}</p>
-    {% endfor %}
+    <h1>{{ title | escape }}</h1>
+    <h2>Environment</h2>
+    <table class="env">
+      {% for entry in envVars | sort %}
+        <tr>
+          <th><tt>{{ entry[0] | escape }}</tt></th>
+          <td><tt>{{ entry[1] | escape }}</tt></td>
+        </tr>
+      {% endfor %}
+    </table>
     <p>Paragraph</p>
   </body>
 </html>

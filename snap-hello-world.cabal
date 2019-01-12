@@ -2,12 +2,12 @@ name:                   snap-hello-world
 version:                0.1.0.0
 -- synopsis:
 -- description:
-homepage:               https://github.com/rcook/snap-hello-world#readme
+homepage:               https://github.com/usethetypes/snap-hello-world#readme
 license:                BSD3
 license-file:           LICENSE
 author:                 Richard Cook
-maintainer:             rcook@rcook.org
-copyright:              2018 Richard Cook
+maintainer:             richard@usethetypes.com
+copyright:              2019 Richard Cook
 category:               Command Line
 build-type:             Simple
 cabal-version:          >= 1.10

@@ -25,4 +25,4 @@ executable snap-hello-world
     , snap-core
     , snap-server
     , text
-    , unordered-containers
+    , transformers

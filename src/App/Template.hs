@@ -5,13 +5,13 @@ module App.Template
     ) where
 
 import Control.Monad.IO.Class (MonadIO(..))
-import Data.HashMap.Strict (HashMap)
+import Control.Monad.Trans.Writer (Writer)
 import Data.Text (Text)
 import Snap.Core (MonadSnap, modifyResponse, setHeader, setResponseCode, writeText)
 import System.IO.Error (tryIOError)
-import Text.Ginger (easyRender, parseGingerFile)
+import Text.Ginger (GVal, Run, SourcePos, easyRender, parseGingerFile)
 
-type Context = HashMap Text Text
+type Context = GVal (Run SourcePos (Writer Text) Text)
 
 resolve :: FilePath -> IO (Maybe String)
 resolve path = do

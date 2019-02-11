@@ -22,7 +22,7 @@ import Snap.Core
     )
 import Snap.Http.Server (httpServe, setPort)
 import Snap.Util.FileServe (serveDirectory, serveFile)
-import System.Environment (getEnvironment, lookupEnv)
+import System.Environment (lookupEnv)
 import Text.Ginger ((~>), dict)
 
 import App.DBUtil
@@ -47,10 +47,8 @@ main = do
 
 showInfo :: MonadSnap m => m ()
 showInfo = do
-    envVars <- liftIO getEnvironment
     renderTemplate "views/_info.html" $ dict
         [ ("title" ~> ("Info" :: Text))
-        , ("envVars" ~> envVars)
         ]
 
 showUsers :: MonadSnap m => ConnectInfo -> m ()

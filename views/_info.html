@@ -10,15 +10,5 @@
   </head>
   <body>
     <h1>{{ title | escape }}</h1>
-    <h2>Environment</h2>
-    <table class="env">
-      {% for entry in envVars | sort %}
-        <tr>
-          <th><tt>{{ entry[0] | escape }}</tt></th>
-          <td><tt>{{ entry[1] | escape }}</tt></td>
-        </tr>
-      {% endfor %}
-    </table>
-    <p>Paragraph</p>
   </body>
 </html>

@@ -1,2 +1,6 @@
 #!/bin/bash
+this_dir=$(cd $(dirname $0); pwd -P)
+
+source $this_dir/../.env
+
 stack exec ghcid -- -T':main'

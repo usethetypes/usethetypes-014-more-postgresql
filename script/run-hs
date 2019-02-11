@@ -1,0 +1,14 @@
+#!/bin/bash
+set -euo pipefail
+
+this_dir=$(cd $(dirname $0); pwd -P)
+
+source $this_dir/../.env
+
+# We could use Stack scripting by placing the appropriate shebang
+# directly at the top of our Haskell source files. However, it doesn't
+# seem possible to pass additional source search paths (using -i) to the
+# the interpreter in this case. Furthermore, we want to pass in the DB
+# connection string from our .env file, anyway, so a little glue script
+# like this makes sense.
+stack runghc -- -i$this_dir/../src $*

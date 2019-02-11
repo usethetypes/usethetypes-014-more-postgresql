@@ -18,10 +18,14 @@ executable snap-hello-world
   main-is:              Main.hs
   default-language:     Haskell2010
   other-modules:
-      App.Template
+      App.DBUtil
+    , App.Template
   build-depends:
       base >= 4.7 && < 5
+    , bytestring
     , ginger
+    , postgresql-simple
+    , regex-posix
     , snap-core
     , snap-server
     , text
